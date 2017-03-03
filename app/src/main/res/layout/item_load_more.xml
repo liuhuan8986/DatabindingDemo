@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.liuhuan.databindingdemo.adpter.CommAdapter"/>
+        <variable
+            name="status"
+            type="int"/>
+        <variable
+            name="loadEvent"
+            type="android.view.View.OnClickListener"/>
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:onClick="@{loadEvent}"
+    >
+
+    <ProgressBar
+        android:id="@+id/load_more_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="@{status==CommAdapter.LOAD_MORE_STATUS?View.VISIBLE:View.GONE}"
+        />
+    <TextView
+        android:id="@+id/load_more_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="16dp"
+        android:text="@{status==CommAdapter.LOAD_MORE_STATUS ? @string/loading : status==CommAdapter.NO_MORE_STATUS? @string/no_more : @string/load_fail}"
+        />
+</LinearLayout>
+</layout>
